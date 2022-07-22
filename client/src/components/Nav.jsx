@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
 
-export default function Nav(props) {
+export default function Nav() {
 
   const navigate = useNavigate();
 
@@ -23,22 +23,22 @@ export default function Nav(props) {
 
   if (isConnected) {
     return (
-        <nav class="main-nav">
-      <Link class="main-nav-logo" to="/">
+        <nav className="main-nav">
+      <Link className="main-nav-logo" to="/">
         <img
-          class="main-nav-logo-image"
+          className="main-nav-logo-image"
           src={bankLogo}
           alt="Argent Bank Logo"
         />
-        <h1 class="sr-only">Argent Bank</h1>
+        <h1 className="sr-only">Argent Bank</h1>
       </Link>
       <div>
-        <Link class="main-nav-item" to="/profile">
-          <i class="fa fa-user-circle"></i>
+        <Link className="main-nav-item" to="/profile">
+          <i className="fa fa-user-circle"></i>
           {username}
           </Link>
-          <i class="fas fa-sign-out-alt"></i>
-          <button onClick={logout} class="main-nav-item logout-button">Sign out</button>
+          <i className="fas fa-sign-out-alt"></i>
+          <button onClick={logout} className="main-nav-item logout-button">Sign out</button>
         </div>
     </nav>
     )
@@ -46,18 +46,18 @@ export default function Nav(props) {
   else {
 
     return (
-        <nav class="main-nav">
-      <Link class="main-nav-logo" to="/">
+        <nav className="main-nav">
+      <Link className="main-nav-logo" to="/">
         <img
-          class="main-nav-logo-image"
+          className="main-nav-logo-image"
           src={bankLogo}
           alt="Argent Bank Logo"
         />
-        <h1 class="sr-only">Argent Bank</h1>
+        <h1 className="sr-only">Argent Bank</h1>
       </Link>
       <div>
-        <Link class="main-nav-item" to="/login">
-          <i class="fa fa-user-circle"></i>
+        <Link className="main-nav-item" to="/login">
+          <i className="fa fa-user-circle"></i>
           Sign In
         </Link>
         </div>

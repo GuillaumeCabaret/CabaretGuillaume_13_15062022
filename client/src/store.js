@@ -1,6 +1,6 @@
 import { createStore } from 'redux'
 
-const initialSate = {
+const initialState = {
   isConnected: false,
   firstName: "",
   lastName: "",
@@ -28,7 +28,7 @@ const logout_action = () => {
 
 
 //REDUCER
-function loginReducer(state = initialSate, action) {
+function loginReducer(state = initialState, action) {
 
   switch (action.type) {
     case "LOGIN_ACTION":

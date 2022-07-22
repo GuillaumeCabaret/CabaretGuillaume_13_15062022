@@ -3,9 +3,10 @@ import Footer from "../../components/Footer";
 import Nav from "../../components/Nav";
 
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 
-import { login_action, store } from "../../store";
+import { login_action } from "../../store";
 
 // Déplacer fetch vers le store
 // Utiliser le state pour recupérer les valeur du formulaire
@@ -15,20 +16,20 @@ function Login(props) {
   let navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
-  //tony@stark.com
-  //password123
+  
   function handleSubmit(e) {
     e.preventDefault()
-    var myHeaders = new Headers();
+    let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = JSON.stringify({
+    let  raw = JSON.stringify({
       "email": email,
       "password": password
     });
 
-    var requestOptions = {
+    let requestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: raw,
@@ -39,34 +40,34 @@ function Login(props) {
       .then(response => response.json())
       .then(result => {
         window.localStorage.setItem("token", result.body.token)
-        store.dispatch(login_action(result.body.token));
+        dispatch(login_action(result.body.token));
 
       })
       .then( () => navigate('/profile'))
-      .catch(error => console.log('error', error)); 
+      .catch(error => console.log('error', error));
   }
 
     return (
       <>
         <Nav></Nav>
-        <main class="main bg-dark">
-          <section class="sign-in-content">
-            <i class="fa fa-user-circle sign-in-icon"></i>
+        <main className="main bg-dark">
+          <section className="sign-in-content">
+            <i className="fa fa-user-circle sign-in-icon"></i>
             <h1>Sign In</h1>
             <form onSubmit={handleSubmit}>
-              <div class="input-wrapper">
-                <label for="username">Username</label>
+              <div className="input-wrapper">
+                <label forhtml="username">Username</label>
                 <input type="text" id="username" onChange={(e) => setEmail(e.target.value)} />
               </div>
-              <div class="input-wrapper">
-                <label for="password">Password</label>
-                <input type="password" id="password" onChange={(e) => setPassword(e.target.value)}/>
+              <div className="input-wrapper">
+                <label forhtml="password">Password</label>
+                <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} required/>
               </div>
-              <div class="input-remember">
+              <div className="input-remember">
                 <input type="checkbox" id="remember-me" />
-                <label for="remember-me">Remember me</label>
+                <label forhtml="remember-me">Remember me</label>
               </div>
-              <button type="submit" class="sign-in-button">Sign In</button>
+              <button type="submit" className="sign-in-button">Sign In</button>
             </form>
           </section>
         </main>
